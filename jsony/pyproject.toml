@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "jsony"
+version = "0.1.0"
+description = "Advanced json package"
+authors = ["eac0de <egor2001zhukov@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
