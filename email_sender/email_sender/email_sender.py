@@ -25,7 +25,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 import aiosmtplib
-from utils.grid_fs.file import File
+
+from file_manager import File
 
 from .constants import MailBodyType
 
@@ -42,7 +43,7 @@ class EmailSender:
         subject: str,
         body: str,
         to_email: str,
-        from_email: str = _SMTP_USERNAME,
+        from_email: str = _SMTP_USERNAME,  # type: ignore
         files: list[File] | None = None,
         body_type: MailBodyType = MailBodyType.PLAIN,
     ):
@@ -118,7 +119,7 @@ async def config_email_sender(
             subject: str,
             body: str,
             to_email: str,
-            from_email: str = settings.SMTP_USERNAME,
+            from_email: str = _SMTP_USERNAME,
             files: list[File] | None = None,
             body_type: MailBodyType = MailBodyType.PLAIN,
         ):
