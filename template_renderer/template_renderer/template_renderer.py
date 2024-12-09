@@ -1,11 +1,7 @@
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-_DEFAULT_TEMPLATES_PATH = "templates"
-"""
-str: Путь по умолчанию к директории с шаблонами.
-"""
 _env = Environment(
-    loader=FileSystemLoader(_DEFAULT_TEMPLATES_PATH),
+    loader=FileSystemLoader("templates"),
     autoescape=select_autoescape(["html", "xml"]),
     enable_async=True,
 )
@@ -59,10 +55,9 @@ async def config_template_renderer(templates_path: str | None = None):
         OSError: Если директория с шаблонами недоступна или недействительна.
     """
     if not templates_path:
-        templates_path = _DEFAULT_TEMPLATES_PATH
-    global _env
-    _env = Environment(
-        loader=FileSystemLoader(templates_path),
-        autoescape=select_autoescape(["html", "xml"]),
-        enable_async=True,
-    )
+        global _env
+        _env = Environment(
+            loader=FileSystemLoader(templates_path),
+            autoescape=select_autoescape(["html", "xml"]),
+            enable_async=True,
+        )
